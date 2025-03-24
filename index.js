@@ -39,6 +39,21 @@
 //   }
 // };
 
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.use(express.static("/"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
 const input = document.getElementById("inputs");
 const output = document.getElementById("result");
 
@@ -109,7 +124,6 @@ function executeScripts(element) {
   const scripts = element.getElementsByTagName("script");
 
   for (let i = 0; i < scripts.length; i++) {
-    <div class="bg-white text-black p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105">
     const newScript = document.createElement("script");
     if (scripts[i].src) {
       newScript.src = scripts[i].src;
@@ -119,6 +133,5 @@ function executeScripts(element) {
       newScript.textContent = scripts[i].textContent;
       document.body.appendChild(newScript);
     }
-    </div>
   }
 }
