@@ -32,7 +32,7 @@
         const prompt = input.value.trim();
         let username = null;
 
-        const match = prompt.match(/(\w+)(?=\s+in|$)/i);
+        const match = prompt.match(/([\w-]+)(?=\s+in|$)/i);
         if (match) {
           username = match[1];
         } else if (!/\s/.test(prompt)) {
